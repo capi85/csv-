@@ -1,0 +1,65 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h1 {
+  color: #333;
+}
+
+#dropZone {
+  border: 3px dashed #aaa;
+  background-color: #fafafa;
+  padding: 30px;
+  text-align: center;
+  color: #888;
+  margin-bottom: 10px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+#dropZone.dragover {
+  background-color: #e0f7fa;
+  border-color: #00acc1;
+  color: #007c91;
+}
+
+#fileList {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+#fileList li {
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-bottom: 3px;
+  font-size: 14px;
+}
+
+#compareBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.diff-block {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.added {
+  background-color: #e6ffe6;
+}
+
+.removed {
+  background-color: #ffe6e6;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-family: monospace;
+}
