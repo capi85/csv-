@@ -48,14 +48,36 @@ document.addEventListener('DOMContentLoaded', () => {
     result.innerHTML = '';
   });
 
+  const resetBtn = document.getElementById('resetBtn');
+
+  resetBtn.addEventListener('click', () => {
+    selectedFiles = [];
+    fileList.innerHTML = '';
+    result.innerHTML = '';
+    compareBtn.style.display = 'none';
+  });
+
   compareBtn.addEventListener('click', () => {
     if (selectedFiles.length < 2 || selectedFiles.length > 3) {
       result.innerHTML = '<p style="color:red;">ファイルは2つか3つまで選択してください。</p>';
       return;
     }
 
+    // 入力ファイル
     const fileABC = selectedFiles.find(f => f.name.startsWith('abc_'));
     const defFiles = selectedFiles.filter(f => f.name.startsWith('def_'));
+    const defKValues = defFiles.map(f => {
+      const match = f.name.match(/^def_\d+_(\d+)\.csv$/);
+      return match ? parseInt(match[1], 10) : null;
+    });
+
+    const isK2 = defKValues.length === 2 && defKValues.includes(1) && defKValues.includes(2);
+    const isK1 = defKValues.length === 1 && defKValues[0] === 1;
+
+    if (!(isK1 || isK2)) {
+      result.innerHTML = '<p style="color:red;">k=2 の場合、def_n_1.csv と def_n_2.csv の両方が必要です。</p>';
+      return;
+    }
 
     if (!fileABC) {
       result.innerHTML = '<p style="color:red;">abc_n.csv ファイルが必要です。</p>';
