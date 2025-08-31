@@ -34,7 +34,6 @@ def generate_files(n, abc_records, def1_records, def1_match, def2_records, def2_
 
     abc_rows = generate_records(abc_records, col_count)
 
-    # ✅ def1_match 件を abc から取得（足りなければ重複許容）
     def1_match_rows = list(islice(cycle(abc_rows), def1_match))
     def1_new_rows = generate_records(def1_records - def1_match, col_count)
     def1_rows = def1_match_rows + def1_new_rows
