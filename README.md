@@ -68,7 +68,7 @@
 
 # CSVファイル生成スクリプト (create_records.py)
 
-このスクリプトは、3つのCSVファイル（`abc_n.csv`、`def_n_1.csv`、`def_n_2.csv`）を生成します。
+このスクリプトは、3つのCSVファイル（`abc_n.csv`、`def_n_1.csv`、`def_n_2.csv`）を生成する
 
 - `abc_n.csv`：基準となるCSVファイル（レコード数は指定可能）
 - `def_n_1.csv`：`abc_n.csv`の一部レコードを含むCSV（ランダムに生成されたレコードも含む）
@@ -78,10 +78,10 @@
 
 ## 特徴
 
-- `def_n_1.csv`と`abc_n.csv`は指定した数の一致レコードを持つ。
-- `def_n_2.csv`は`def_n_1.csv`に含まれない`abc_n.csv`のレコードの一部を含む。
-- `def_n_1.csv`と`def_n_2.csv`のレコード順はランダムにシャッフルされている。
-- レコードは3カラム（`id`, `name`, `col1`）のランダム文字列で構成。
+- `def_n_1.csv`と`abc_n.csv`は指定した数の一致レコードを持つ
+- `def_n_2.csv`は`def_n_1.csv`に含まれない`abc_n.csv`のレコードの一部を含む
+- `def_n_1.csv`と`def_n_2.csv`のレコード順はランダムにシャッフルされている
+- レコードは3カラム（`id`, `name`, `col1`）のランダム文字列で構成
 
 ---
 
@@ -109,18 +109,12 @@ python generate_csv.py n [--abc_records ABC_RECORDS] [--def1_records DEF1_RECORD
     def_n_2.csvがabc_n.csvかつdef_n_1.csvに含まれない一致レコード数（デフォルト: 22）
 ```
 
+## ファイル生成の例
 ```
- $ python generate_csv.py 10 --abc_records 50 --def1_records 28 --def1_match 27 --def2_records 25 --def2_match 22
+ $ python generate_csv.py 10 --abc_records 50 --def1_records 28 --def1_match 27 --def2_records 25 --def2_match 22 --col col1 col2 col3 col4
 ```
-
-## このコマンドは以下のファイルを生成します。
 - abc_10.csv（50レコード）
 - def_10_1.csv（28レコード、そのうち27レコードがabc_10.csvと一致）
 - def_10_2.csv（25レコード、そのうち22レコードがabc_10.csvかつdef_10_1.csvに含まれない）
-
----
-## 注意
-- def1_matchはdef1_records以下である必要があります。
-- def2_matchはdef2_records以下である必要があります。
-- def2_matchはabc_recordsからdef1_matchを引いた数以下である必要があります。
+- id, name, col1, col2, col3, col4 をカラムとして生成する。
 ---
